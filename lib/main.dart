@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whether_app_flutter/components/other_City_Card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,13 +18,14 @@ class MyApp extends StatelessWidget {
               gradient: LinearGradient(begin: Alignment.topCenter, colors: [
             Color(0Xff6d94ff),
             Color(0Xff664ACF),
+            Color(0xff8417F9)
           ])),
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                SizedBox(
-                  height: 30,
+                const SizedBox(
+                  height: 20,
                 ),
                 const Align(
                   alignment: Alignment.centerLeft,
@@ -52,7 +54,6 @@ class MyApp extends StatelessWidget {
                       hintText: 'Search Area',
                       filled: true,
                       fillColor: Colors.white),
-                  autocorrect: true,
                 ),
                 const Align(
                   alignment: Alignment.topLeft,
@@ -112,14 +113,27 @@ class MyApp extends StatelessWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Other City', style: TextStyle(color: Colors.white)),
                       Text('View All', style: TextStyle(color: Colors.white))
                     ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 3,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: OtherCityCard(),
+                      );
+                    },
                   ),
                 )
               ],
